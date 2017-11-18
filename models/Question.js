@@ -9,7 +9,7 @@ class Question{
 
     return new Promise(function(resolve){ //Promise is not PROMISE
       db.run(sql, function(){
-        resolve("This does nothing.") //do I need something inside resolve?
+        resolve() //do I need something inside resolve?
 
       })
     })
