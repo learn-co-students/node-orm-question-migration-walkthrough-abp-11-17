@@ -4,6 +4,8 @@ const { expect } = require('chai');
 
 const db = require('../../config/db');
 
+
+
 const Question = require('../../models/Question');
 
 function getTableInfo(tableName){
@@ -18,10 +20,10 @@ function getTableInfo(tableName){
 async function resetDB(){
   return new Promise(async function(resolve){
     await db.run(`DROP TABLE IF EXISTS questions`, function(){
-      resolve("dropped the questions table")      
+      resolve("dropped the questions table")
     })
   })
-}; 
+};
 
 describe('Question', () => {
   describe('as a class', () => {
@@ -31,12 +33,12 @@ describe('Question', () => {
       })
       afterEach(async function() {
         await resetDB()
-      })      
+      })
 
       it('exists', async () => {
         expect(Question.CreateTable).to.be.a('function');
       });
-      
+
       it("returns a promise", async function(){
         const CreateTablePromise = Question.CreateTable()
 
@@ -47,7 +49,7 @@ describe('Question', () => {
         await Question.CreateTable();
 
         const table = await getTableInfo('questions')
-        
+
         expect(table.name).to.eq('questions');
       });
 
